@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Viewer</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html, body{
+            /* height:100%; */
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            display:flex;
+            flex-direction:column;
+            min-height:100vh;
+        }
+
+        nav{
+            height:70px;
+            width:100%;
+            background:#FFFFFF;
+            display:flex;
+            align-items:center;
+            padding:0 2rem;
+            box-shadow:0 2px 4px rgba(0,0,0,.08);
+            border-bottom: 1px solid rgba(211, 211, 211, 0.644);
+        
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Keeps it layered above other content */        
+        
+        }
+
+        main{
+            flex:1;
+            width:100%;
+            background:#F2F2F2;
+            padding:2rem;
+        }
+
+        footer{
+            height:80px;
+            width:100%;
+            background:#404040;
+        }
+
+        .section{
+            max-width:1400px;
+            margin:0 auto 2rem auto;
+        }
+
+        .section h1{
+            margin-bottom:1rem;
+            font-weight:500;
+        }
+
+        .process-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+            gap:1rem;
+        }
+
+        .process-card{
+            background:white;
+            border-radius:8px;
+            box-shadow:0 2px 6px rgba(0,0,0,.15);
+            min-height:140px;
+            padding:1rem;
+            cursor:pointer;
+            border: 1px solid white;
+            transition:.2s;
+        }
+
+        .process-card:hover{
+            transform:translateY(-3px);
+        }
+        .process-icon{
+
+            margin-top:auto;          /* Pushes icon to bottom */
+            align-self:flex-end;      /* Pushes icon to right */
+            float: right;
+            width: 30px;
+            height:30px;
+            
+
+            object-fit:contain;
+        }
+        .process-card.selected{
+            border: 1px solid #1596D1;
+        }
+
+        .description-card,
+        .video-card{
+
+            background:white;
+            border-radius:8px;
+            box-shadow:0 2px 6px rgba(0,0,0,.15);
+            padding:1.5rem;
+        }
+        .video-card video{
+                width:100%;
+                aspect-ratio:16 / 9;
+                height:auto;
+                display:block;
+                border-radius:6px;
+                object-fit:cover;
+        }
+
+        .description-card{
+            min-height:200px;
+        }
+
+        .description-card h2{
+            margin-bottom:1rem;
+        }
+
+        .description-card p{
+            margin:.5rem 0;
+        }
+
+        .description-card ul{
+            margin:.5rem 0 .5rem 2rem;
+        }
+
+        .description-card img{
+            max-width:100%;
+            margin-top:1rem;
+        }
+
+        video{
+            width:100%;
+            border-radius:6px;
+            display:block;
+        }
+    .process_card_title{
+        height: 50px;
+    }
+
+
+.carousel-card{
+
+    background:white;
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,.15);
+
+    padding:1.5rem;
+
+    display:flex;
+    align-items:center;
+    gap:1rem;
+
+}
+
+.carousel-window{
+
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.carousel-window img{
+
+    width:100%;
+    max-height:700px;
+    object-fit:contain;
+    border-radius:6px;
+
+}
+
+.carousel-btn{
+
+    width:50px;
+    height:50px;
+
+    border:none;
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:#1596D1;
+    color:white;
+
+    font-size:1.5rem;
+
+    transition:.2s;
+
+}
+
+.carousel-btn:hover{
+    background:#1074a2;
+}
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+            <a href="#top" class="logo" aria-label="Back to top">
+                <img class="" src="icons/we_logo_full.svg" alt="we_logo">
+            </a>
+
+    </nav>
+
+    <main>
+
+        <!-- Process Selection -->
+
+        <section class="section">
+            <h1>Process Selection</h1>
+            <div id="process-container" class="process-grid"></div>
+        </section>
+<br>
+        <!-- Process Description -->
+
+        <!-- <section class="section">
+            <h1>Process Description</h1>
+            <div id="process-description" class="description-card"></div>
+        
+        </section>
+<br> -->
+<!-- Process Information -->
+
+    <section class="section">
+
+        <h1>Process Information</h1>
+
+        <div class="carousel-card">
+
+            <button id="carousel-left" class="carousel-btn">&#10094;</button>
+
+            <div class="carousel-window">
+
+                <img id="carousel-image" src="" alt="Process Information">
+
+            </div>
+
+            <button id="carousel-right" class="carousel-btn">&#10095;</button>
+
+        </div>
+
+    </section>
+<br>
+        <!-- Process Overview -->
+
+        <!-- <section class="section">
+            <h1>Process Overview</h1>
+            <div id="overview-video" class="video-card"></div>
+        </section>
+<br> -->
+        <!-- System Demo -->
+
+        <section class="section">
+            <h1>System Demo</h1>
+            <div id="system-video" class="video-card"></div>
+        </section>
+
+    </main>
+
+    <footer></footer>
+
+    <script src="script2.js"></script>
+
+</body>
+
+</html>
