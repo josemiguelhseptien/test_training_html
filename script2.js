@@ -551,8 +551,10 @@ function renderSystemVideo(){
     const container = document.getElementById("system-video");
 
     container.innerHTML = `
-<iframe width="1257" height="719" src="https://www.youtube.com/embed/U4i3VFAn43k" title="Discover the Westernacher difference." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    `;
+    <div class="video-container">
+    <iframe width="1257" height="719" src="https://www.youtube.com/embed/U4i3VFAn43k" title="Discover the Westernacher difference." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>     
+`;
 
 }
 
