@@ -552,7 +552,7 @@ function renderSystemVideo(){
 
     container.innerHTML = `
     <div class="video-container">
-    <iframe width="1257" height="719" src="https://www.youtube.com/embed/U4i3VFAn43k" title="Discover the Westernacher difference." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe width="2540" height="1046" src="https://www.youtube.com/embed/7DW1JsnXytU" title="Level 6 - Arpeggios - Bb Major and Bb Minor" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>    
     </div>     
 `;
 
