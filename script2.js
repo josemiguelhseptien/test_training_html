@@ -2,10 +2,17 @@
 // Parent JSON
 // ======================================================
 
+const streams = [
+    "Inbound",
+    "Outbound",
+    "Internal"
+]
+
 const processes = [
 
     {
         process_id:1,
+        stream:"Internal",
         process_title:"Adhoc Physical Inventory",
         icon:"icons/pallet1.svg",
         overview_video:"https://www.youtube.com/embed/jNQXAC9IVRw",
@@ -14,6 +21,7 @@ const processes = [
 
     {
         process_id:2,
+        stream:"Inbound",
         process_title:"Inbound process",
         icon:"icons/forklift1.svg",
         overview_video:"WeScan_videos/Use Case 1 - Inbound Process.mp4",
@@ -22,6 +30,7 @@ const processes = [
     
     {
         process_id:3,
+        stream:"Inbound",
         process_title:"Receiving process",
         icon:"icons/putaway1.svg",
         overview_video:"WeScan_videos/Use Case 2 - Receiving Process.mp4",
@@ -30,6 +39,7 @@ const processes = [
 
     {
         process_id:4,
+        stream:"Inbound",
         process_title:"Putaway process",
         icon:"icons/warehouse2.svg",
         overview_video:"WeScan_videos/Use Case 3 - Putaway Process.mp4",
@@ -37,6 +47,7 @@ const processes = [
     },
         {
         process_id:5,
+        stream:"Outbound",
         process_title:"Allocation & Picking Process",
         icon:"icons/case_pick1.svg",
         overview_video:"WeScan_videos/Use Case 4 - Allocation & Picking Process.mp4",
@@ -44,6 +55,7 @@ const processes = [
     },
         {
         process_id:6,
+        stream:"Inbound",
         process_title:"Receipt of stock from CSN",
         icon:"icons/case_pick2.svg",
         overview_video:"WeScan_videos/Use Case 5 - Receipt of Stock from CSN.mp4",
@@ -52,6 +64,7 @@ const processes = [
 
         {
         process_id:7,
+        stream:"Internal",
         process_title:"Cycle Count",
         icon:"icons/case_count1.svg",
         overview_video:"WeScan_videos/Use Case 11 - Cycle count.mp4",
@@ -59,6 +72,7 @@ const processes = [
     },
         {
         process_id:8,
+        stream:"Internal",
         process_title:"Replenishment process",
         icon:"icons/rack1.svg",
         overview_video:"WeScan_videos/Use Case 12 - Replenishment.mp4",
@@ -128,8 +142,8 @@ const processItems = [
 
     {
     process_id:1,
-    item_id:10,
-    sequence:10,
+    item_id:8,
+    sequence:8,
     content_type:"carousel",
     content:"slides/adhoc_pi_1.jpg"
 },
@@ -165,6 +179,15 @@ const processItems = [
     content_type:"carousel",
     content:"slides/adhoc_pi_5.jpg"
 },
+
+    {
+    process_id:1,
+    item_id:9,
+    sequence:9,
+    content_type:"carousel",
+    content:"slides/adhoc_pi_6.jpg"
+},
+
 
     {
     process_id:7,
@@ -411,7 +434,8 @@ let carouselIndex = 0;
 
 function refreshPage(){
 
-    renderProcessCards();
+    // renderProcessCards();
+    renderProcessCards2();
     // renderProcessDescription();
     renderCarousel();
     // renderOverviewVideo();
@@ -422,6 +446,62 @@ function refreshPage(){
 // ======================================================
 // PROCESS CARDS
 // ======================================================
+
+
+function renderProcessCards2(){
+
+    const container = document.getElementById("process-container");
+
+    container.innerHTML = "";
+
+    streams.forEach(stream => {
+
+        const section = document.createElement("section");
+        section.className = "stream-section";
+
+        section.innerHTML = `
+            <h2>${stream} Processes</h2>
+            <div class="process-grid"></div>
+        `;
+
+        const grid = section.querySelector(".process-grid");
+
+        processes
+            .filter(p => p.stream === stream)
+            .forEach(process => {
+
+                const card = document.createElement("div");
+                card.className = "process-card";
+
+                if(process.process_id === current_obj.process_id){
+                    card.classList.add("selected");
+                }
+
+                card.innerHTML = `
+                    <h3>${process.process_title}</h3>
+                    <img class="process-icon"
+                         src="${process.icon}"
+                         alt="">
+                `;
+
+                card.onclick = () => {
+                    current_obj = process;
+                    refreshPage();
+                };
+
+                grid.appendChild(card);
+
+            });
+
+        container.appendChild(section);
+
+    });
+
+}
+
+
+
+
 
 function renderProcessCards(){
 
